@@ -26,7 +26,7 @@ See [config.md](config.md) for details.
 
 ## Installation
 
-Copy this folder into your Anki add-ons directory (Tools → Add-ons → Open Add-ons Folder), then restart Anki.
+Install from AnkiWeb: [ankiweb.net/shared/info/2060144143](https://ankiweb.net/shared/info/2060144143).
 
 ## Credits
 
