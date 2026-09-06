@@ -22,4 +22,4 @@ Inspired by <a href="https://ankiweb.net/shared/info/1084228676">Color Confirmat
 
 <a href="https://github.com/codylewis/anki-show-answer-button-pressed">https://github.com/codylewis/anki-show-answer-button-pressed</a>
 
-License: MIT
+License: MIT.
