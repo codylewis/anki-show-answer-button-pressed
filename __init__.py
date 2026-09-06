@@ -1,13 +1,26 @@
 from aqt import gui_hooks, mw
 from aqt.reviewer import Reviewer
-from PyQt6 import QtWidgets, QtCore
+from aqt.qt import QLabel, QObject, QEvent, Qt, QTimer
 
-BUTTON_STYLES = {
-    1: ("Arís", "rgba(170,51,51,0.33)"),
-    2: ("Deacair", "rgba(204,119,0,0.33)"),
-    3: ("Go Maith", "rgba(0,170,0,0.33)"),
-    4: ("Éasca", "rgba(0,108,255,0.33)"),
+LANGUAGES = {
+    "en": {1: "Again", 2: "Hard", 3: "Good", 4: "Easy"},
+    "ga": {1: "Arís", 2: "Deacair", 3: "Go Maith", 4: "Éasca"},
 }
+
+BUTTON_COLORS = {
+    1: "rgba(170,51,51,0.33)",
+    2: "rgba(204,119,0,0.33)",
+    3: "rgba(0,170,0,0.33)",
+    4: "rgba(0,108,255,0.33)",
+}
+
+
+def _button_style(ease: int):
+    config = mw.addonManager.getConfig(__name__) or {}
+    language = config.get("language", "en")
+    labels = LANGUAGES.get(language, LANGUAGES["en"])
+    return labels.get(ease, str(ease)), BUTTON_COLORS.get(ease, "#000")
+
 
 SHARED_STYLING = (
     "font-size: 15px; padding: 5px 12px; color: white; "
@@ -20,19 +33,22 @@ LABEL_HEIGHT = 30
 LABEL_MARGIN_TOP = 0
 LABEL_MARGIN_RIGHT = 20
 
-DEBUG_ALWAYS_SHOW = False
+
+def _debug_always_show() -> bool:
+    config = mw.addonManager.getConfig(__name__) or {}
+    return bool(config.get("debug_always_show", False))
 
 
-class _ResizeFilter(QtCore.QObject):
+class _ResizeFilter(QObject):
     def eventFilter(self, _obj, event):
-        if event.type() == QtCore.QEvent.Type.Resize and _state.label:
+        if event.type() == QEvent.Type.Resize and _state.label:
             _set_label_position()
         return False
 
 
 class _State:
-    label: QtWidgets.QLabel | None = None
-    hide_timer: QtCore.QTimer | None = None
+    label: QLabel | None = None
+    hide_timer: QTimer | None = None
     resize_filter: _ResizeFilter | None = None
 
 
@@ -51,15 +67,15 @@ def _set_label_position():
 def _ensure_label():
     if _state.label is not None:
         return
-    _state.label = QtWidgets.QLabel("", mw)
+    _state.label = QLabel("", mw)
     _state.label.setStyleSheet(SHARED_STYLING)
-    _state.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-    _state.label.setAttribute(QtCore.Qt.WidgetAttribute.WA_TransparentForMouseEvents)
+    _state.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+    _state.label.setAttribute(Qt.WidgetAttribute.WA_TransparentForMouseEvents)
     _set_label_position()
     _state.label.hide()
     _state.label.raise_()
 
-    _state.hide_timer = QtCore.QTimer(mw)
+    _state.hide_timer = QTimer(mw)
     _state.hide_timer.setSingleShot(True)
     _state.hide_timer.timeout.connect(_state.label.hide)
 
@@ -77,12 +93,12 @@ def new_answerCard(self, ease: int):
     _ensure_label()
     old_answerCard(self, ease)
 
-    name, bg_color = BUTTON_STYLES.get(ease, (str(ease), "#000"))
+    name, bg_color = _button_style(ease)
     _state.label.setText(name)
     _state.label.setStyleSheet(f"background-color: {bg_color}; {SHARED_STYLING}")
     _state.label.show()
     _state.label.raise_()
-    if not DEBUG_ALWAYS_SHOW:
+    if not _debug_always_show():
         _state.hide_timer.start(1500)
 
 
@@ -90,7 +106,7 @@ Reviewer._answerCard = new_answerCard
 
 
 def on_show_question(_card):
-    if not DEBUG_ALWAYS_SHOW:
+    if not _debug_always_show():
         return
     _ensure_label()
     _state.label.setText("?")
