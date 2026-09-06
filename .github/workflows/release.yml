@@ -35,11 +35,12 @@ jobs:
             exit 0
           fi
 
+          gh release view "$TAG" --json body -q .body > body.txt
+
           if git diff --quiet "$PREV_TAG" "$TAG" -- ANKIWEB_DESCRIPTION.md; then
-            echo "ANKIWEB_DESCRIPTION.md unchanged since $PREV_TAG"
-            exit 0
+            printf '\n\n---\nNo changes to ANKIWEB_DESCRIPTION.md since %s.\n' "$PREV_TAG" >> body.txt
+          else
+            printf '\n\n---\nANKIWEB_DESCRIPTION.md changed in this release: https://github.com/%s/blob/%s/ANKIWEB_DESCRIPTION.md\n' "$GITHUB_REPOSITORY" "$TAG" >> body.txt
           fi
 
-          gh release view "$TAG" --json body -q .body > body.txt
-          printf '\n\n---\nANKIWEB_DESCRIPTION.md changed in this release: https://github.com/%s/blob/%s/ANKIWEB_DESCRIPTION.md\n' "$GITHUB_REPOSITORY" "$TAG" >> body.txt
           gh release edit "$TAG" --notes-file body.txt
