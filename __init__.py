@@ -1,5 +1,4 @@
 from aqt import gui_hooks, mw
-from aqt.reviewer import Reviewer
 from aqt.qt import QLabel, QObject, QEvent, Qt, QTimer
 
 LANGUAGES = {
@@ -83,16 +82,8 @@ def _ensure_label():
     mw.installEventFilter(_state.resize_filter)
 
 
-old_answerCard = Reviewer._answerCard
-
-
-def new_answerCard(self, ease: int):
-    if self.state != "answer":
-        old_answerCard(self, ease)
-        return
+def on_answer_card(_reviewer, _card, ease: int):
     _ensure_label()
-    old_answerCard(self, ease)
-
     name, bg_color = _button_style(ease)
     _state.label.setText(name)
     _state.label.setStyleSheet(f"background-color: {bg_color}; {SHARED_STYLING}")
@@ -102,7 +93,7 @@ def new_answerCard(self, ease: int):
         _state.hide_timer.start(1500)
 
 
-Reviewer._answerCard = new_answerCard
+gui_hooks.reviewer_did_answer_card.append(on_answer_card)
 
 
 def on_show_question(_card):
