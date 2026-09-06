@@ -4,9 +4,13 @@ An Anki add-on that shows which ease button (Again/Hard/Good/Easy) you just pres
 
 ## Screenshots
 
-| Again | Hard | Good | Easy |
-| --- | --- | --- | --- |
-| ![Again](screenshots/screenshot-again.png) | ![Hard](screenshots/screenshot-hard.png) | ![Good](screenshots/screenshot-good.png) | ![Easy](screenshots/screenshot-easy.png) |
+![Again](screenshots/screenshot-again.png)
+
+![Hard](screenshots/screenshot-hard.png)
+
+![Good](screenshots/screenshot-good.png)
+
+![Easy](screenshots/screenshot-easy.png)
 
 ## Configuration
 
