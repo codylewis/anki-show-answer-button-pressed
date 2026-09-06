@@ -30,7 +30,7 @@ Copy this folder into your Anki add-ons directory (Tools → Add-ons → Open Ad
 
 ## Credits
 
-Inspired by [Color Confirmation](https://ankiweb.net/shared/info/1084228676) by MacMarc (itself a modification of the Answer Confirmation add-on by Albert Lyubarsky). This is an independent implementation — no code is shared with either.
+Inspired by [Color Confirmation](https://ankiweb.net/shared/info/1084228676), itself a modification of an earlier Answer Confirmation add-on. This is an independent implementation, no code is shared with either.
 
 ## License
 
