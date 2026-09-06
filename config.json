@@ -1,4 +1,5 @@
 {
     "language": "en",
-    "debug_always_show": false
+    "debug_always_show": false,
+    "hide_duration_ms": 1500
 }

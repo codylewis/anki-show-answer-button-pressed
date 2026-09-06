@@ -38,6 +38,11 @@ def _debug_always_show() -> bool:
     return bool(config.get("debug_always_show", False))
 
 
+def _hide_duration_ms() -> int:
+    config = mw.addonManager.getConfig(__name__) or {}
+    return int(config.get("hide_duration_ms", 1500))
+
+
 class _ResizeFilter(QObject):
     def eventFilter(self, _obj, event):
         if event.type() == QEvent.Type.Resize and _state.label:
@@ -90,7 +95,7 @@ def on_answer_card(_reviewer, _card, ease: int):
     _state.label.show()
     _state.label.raise_()
     if not _debug_always_show():
-        _state.hide_timer.start(1500)
+        _state.hide_timer.start(_hide_duration_ms())
 
 
 gui_hooks.reviewer_did_answer_card.append(on_answer_card)
