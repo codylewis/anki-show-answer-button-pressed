@@ -17,8 +17,12 @@ BUTTON_COLORS = {
 def _button_style(ease: int):
     config = mw.addonManager.getConfig(__name__) or {}
     language = config.get("language", "en")
-    labels = LANGUAGES.get(language, LANGUAGES["en"])
-    return labels.get(ease, str(ease)), BUTTON_COLORS.get(ease, "#000")
+    if language in LANGUAGES:
+        label = LANGUAGES[language].get(ease, str(ease))
+    else:
+        custom_labels = config.get("custom_labels", {}) or {}
+        label = custom_labels.get(str(ease)) or LANGUAGES["en"].get(ease, str(ease))
+    return label, BUTTON_COLORS.get(ease, "#000")
 
 
 SHARED_STYLING = (

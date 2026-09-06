@@ -3,7 +3,7 @@ Shows which ease button (Again / Hard / Good / Easy) you just pressed as a color
 Features:
 
 - Color-coded per ease (red/orange/green/blue)
-- Configurable language for the labels: English or Irish (Gaeilge)
+- Configurable language for the labels: English, Irish (Gaeilge), or your own custom text
 - Optional "always show" debug mode for tweaking position/styling
 
 Configure via Tools → Add-ons → Show Answer Button Pressed → Config.

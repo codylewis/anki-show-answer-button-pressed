@@ -4,9 +4,15 @@
 
 Language used for the ease button labels shown after answering a card.
 
-Supported values: `en` (English), `ga` (Irish / Gaeilge).
+Supported values: `en` (English), `ga` (Irish / Gaeilge), or `custom` to use `custom_labels` (see below). Any other value not recognized here also falls back to `custom_labels`, using the English label for any ease left blank there.
 
 Default: `en`
+
+## custom_labels
+
+Custom text for the Again/Hard/Good/Easy labels, used when `language` is set to a value other than `en` or `ga`. Keys are the ease as a string (`"1"` again, `"2"` hard, `"3"` good, `"4"` easy). Leave a value blank to fall back to the English label for that ease.
+
+Default: all blank (falls back to English).
 
 ## debug_always_show
 

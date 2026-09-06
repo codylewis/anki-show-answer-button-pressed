@@ -18,7 +18,8 @@ Configurable from **Tools → Add-ons → Show Answer Button Pressed → Config*
 
 | Key | Description | Default |
 | --- | --- | --- |
-| `language` | Language for the button labels: `en` (English) or `ga` (Irish / Gaeilge) | `en` |
+| `language` | Language for the button labels: `en` (English), `ga` (Irish / Gaeilge), or `custom` to use `custom_labels` instead | `en` |
+| `custom_labels` | Custom Again/Hard/Good/Easy text, used when `language` is `custom` (or any other unrecognized value) | blank (falls back to English) |
 | `debug_always_show` | Keep the label visible at all times instead of auto-hiding, for tweaking position/styling | `false` |
 | `hide_duration_ms` | How long (in milliseconds) the label stays visible after answering before auto-hiding | `1500` |
 
