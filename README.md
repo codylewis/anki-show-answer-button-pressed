@@ -1,9 +1,6 @@
 # Show Pressed Button
 
-An Anki add-on that shows which ease button (Again/Hard/Good/Easy) you just
-pressed as a color-coded label in the top-right corner of the main window,
-auto-hiding after 1.5 seconds. Handy for confirming you pressed the button
-you meant to, especially when answering with keyboard shortcuts.
+An Anki add-on that shows which ease button (Again/Hard/Good/Easy) you just pressed as a color-coded label in the top-right corner of the main window, auto-hiding after 1.5 seconds. Handy for confirming you pressed the button you meant to, especially when answering with keyboard shortcuts.
 
 ## Configuration
 
@@ -18,15 +15,11 @@ See [config.md](config.md) for details.
 
 ## Installation
 
-Copy this folder into your Anki add-ons directory (Tools → Add-ons → Open
-Add-ons Folder), then restart Anki.
+Copy this folder into your Anki add-ons directory (Tools → Add-ons → Open Add-ons Folder), then restart Anki.
 
 ## Credits
 
-Inspired by [Color Confirmation](https://ankiweb.net/shared/info/1084228676)
-by MacMarc (itself a modification of the Answer Confirmation add-on by
-Albert Lyubarsky). This is an independent implementation — no code is shared
-with either.
+Inspired by [Color Confirmation](https://ankiweb.net/shared/info/1084228676) by MacMarc (itself a modification of the Answer Confirmation add-on by Albert Lyubarsky). This is an independent implementation — no code is shared with either.
 
 ## License
 
