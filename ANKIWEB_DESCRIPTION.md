@@ -6,7 +6,7 @@ Features:
 - Configurable language for the labels: English or Irish (Gaeilge)
 - Optional "always show" debug mode for tweaking position/styling
 
-Configure via Tools → Add-ons → Show Pressed Button → Config.
+Configure via Tools → Add-ons → Show Answer Button Pressed → Config.
 
 Inspired by Color Confirmation (https://ankiweb.net/shared/info/1084228676), independently implemented.
 

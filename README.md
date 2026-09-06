@@ -1,10 +1,10 @@
-# Show Pressed Button
+# Show Answer Button Pressed
 
 An Anki add-on that shows which ease button (Again/Hard/Good/Easy) you just pressed as a color-coded label in the top-right corner of the main window, auto-hiding after 1.5 seconds. Handy for confirming you pressed the button you meant to, especially when answering with keyboard shortcuts.
 
 ## Configuration
 
-Configurable from **Tools → Add-ons → Show Pressed Button → Config**:
+Configurable from **Tools → Add-ons → Show Answer Button Pressed → Config**:
 
 | Key | Description | Default |
 | --- | --- | --- |
