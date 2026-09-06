@@ -12,9 +12,14 @@ Configure via Tools → Add-ons → Show Answer Button Pressed → Config.
 <img src="https://raw.githubusercontent.com/codylewis/anki-show-answer-button-pressed/main/screenshots/screenshot-hard.png">
 <img src="https://raw.githubusercontent.com/codylewis/anki-show-answer-button-pressed/main/screenshots/screenshot-good.png">
 <img src="https://raw.githubusercontent.com/codylewis/anki-show-answer-button-pressed/main/screenshots/screenshot-easy.png">
+<br><br>
+
+### Credits
 
 Inspired by <a href="https://ankiweb.net/shared/info/1084228676">Color Confirmation</a>, independently implemented.
 
-Source: <a href="https://github.com/codylewis/anki-show-answer-button-pressed">https://github.com/codylewis/anki-show-answer-button-pressed</a>
+### Source
+
+<a href="https://github.com/codylewis/anki-show-answer-button-pressed">https://github.com/codylewis/anki-show-answer-button-pressed</a>
 
 License: MIT
