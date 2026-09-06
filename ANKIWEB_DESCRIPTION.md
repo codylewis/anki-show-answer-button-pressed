@@ -16,4 +16,5 @@ Configure via Tools → Add-ons → Show Answer Button Pressed → Config.
 Inspired by <a href="https://ankiweb.net/shared/info/1084228676">Color Confirmation</a>, independently implemented.
 
 Source: <a href="https://github.com/codylewis/anki-show-answer-button-pressed">https://github.com/codylewis/anki-show-answer-button-pressed</a>
+
 License: MIT
