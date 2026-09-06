@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Build .ankiaddon
         run: zip -X show-answer-button-pressed.ankiaddon __init__.py config.json config.md
@@ -20,3 +22,24 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh release upload "${{ github.event.release.tag_name }}" show-answer-button-pressed.ankiaddon
+
+      - name: Link AnkiWeb description if it changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.event.release.tag_name }}
+        run: |
+          PREV_TAG=$(git tag --sort=-creatordate | grep -vFx "$TAG" | head -n1)
+
+          if [ -z "$PREV_TAG" ]; then
+            echo "No previous release tag found, skipping"
+            exit 0
+          fi
+
+          if git diff --quiet "$PREV_TAG" "$TAG" -- ANKIWEB_DESCRIPTION.md; then
+            echo "ANKIWEB_DESCRIPTION.md unchanged since $PREV_TAG"
+            exit 0
+          fi
+
+          gh release view "$TAG" --json body -q .body > body.txt
+          printf '\n\n---\nANKIWEB_DESCRIPTION.md changed in this release: https://github.com/%s/blob/%s/ANKIWEB_DESCRIPTION.md\n' "$GITHUB_REPOSITORY" "$TAG" >> body.txt
+          gh release edit "$TAG" --notes-file body.txt
